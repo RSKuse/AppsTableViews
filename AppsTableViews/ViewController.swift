@@ -9,10 +9,16 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    /// TableView Styles
+    /// - plain
+    /// - grouped
+    /// - insertGrouped
     lazy var infoTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.dataSource = self
         tableView.delegate = self
+        // tableView.separatorColor = .red
+        tableView.separatorInset = UIEdgeInsets(top: 0.0, left: 64, bottom: 0.0, right: 0.0)
         tableView.isScrollEnabled = true
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
@@ -38,8 +44,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         infoTableView.register(AppTableViews.self,forCellReuseIdentifier: "AppTableViews")
     }
     
+    
+    // ##### Number of Sections
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    // ##### Number of Sections
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        if section == 0 {
+            return 2
+        } else if section == 1 {
+            return 5
+        } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -48,7 +67,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(110)
+        return CGFloat(70)
     }
     
+    // ##### Selecting a Cell
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // print(indexPath)
+        
+        // ##### navigation to another scree / viewController
+        let durbanViewController = DurbanViewController()
+        present(durbanViewController, animated: true)
+    }
 }
