@@ -58,6 +58,8 @@ class AppTableViews: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: UITableViewCell.CellStyle.default, reuseIdentifier: reuseIdentifier)
         
+        theSwitch.frame = CGRect(x: 5, y: 5, width: 100, height: contentView.frame.size.height-10)
+        
         addSubview(googleLogoImage)
         addSubview(theSwitch)
         addSubview(titleDetailLabelStackView)
@@ -67,15 +69,12 @@ class AppTableViews: UITableViewCell {
         googleLogoImage.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
         googleLogoImage.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0).isActive = true
 
-    
         theSwitch.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
         theSwitch.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0).isActive = true
         
-        titleDetailLabelStackView.leftAnchor.constraint(equalTo: googleLogoImage.rightAnchor,
-                                                        constant: 16).isActive = true
+        titleDetailLabelStackView.leftAnchor.constraint(equalTo: googleLogoImage.rightAnchor, constant: 16).isActive = true
         titleDetailLabelStackView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        titleDetailLabelStackView.rightAnchor.constraint(equalTo: theSwitch.leftAnchor,
-                                                         constant: -16).isActive = true
+        titleDetailLabelStackView.rightAnchor.constraint(equalTo: theSwitch.leftAnchor, constant: -16).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }

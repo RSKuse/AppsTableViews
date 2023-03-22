@@ -14,11 +14,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     /// - grouped
     /// - insertGrouped
     lazy var infoTableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
+        let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.dataSource = self
         tableView.delegate = self
         // tableView.separatorColor = .red
-        tableView.separatorInset = UIEdgeInsets(top: 0.0, left: 64, bottom: 0.0, right: 0.0)
+        tableView.separatorInset = UIEdgeInsets(top: 0.0, left: 75, bottom: 0.0, right: 0.0)
         tableView.isScrollEnabled = true
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
@@ -47,7 +47,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // ##### Number of Sections
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 5
     }
     
     // ##### Number of Sections
@@ -56,6 +56,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             return 2
         } else if section == 1 {
             return 5
+        } else if section == 2 {
+            return 7
         } else {
             return 1
         }
@@ -73,9 +75,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // ##### Selecting a Cell
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // print(indexPath)
-        
+
         // ##### navigation to another scree / viewController
-        let durbanViewController = DurbanViewController()
-        present(durbanViewController, animated: true)
+        let cardanoViewController = CardanoViewController()
+        present(cardanoViewController, animated: true)
     }
 }
